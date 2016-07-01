@@ -1,0 +1,63 @@
+package Flocking;
+
+import processing.core.*;
+
+import java.util.*;
+
+import Flocking.Boid;
+
+public class Flock extends PApplet {
+	public static void main(String[] args) {
+		PApplet.main("Flocking.Flock");
+
+	}
+	Flock flock;
+	
+	public void settings(){
+		 size(640, 360);
+	}
+
+	public void setup() {
+	 
+	  flock = new Flock();
+	  // Add an initial set of boids into the system
+	  for (int i = 0; i < 150; i++) {
+	    flock.addBoid(new Boid(this,width/2,height/2));
+	  }
+	}
+
+	public void draw() {
+	  background(50);
+	  flock.run();
+	}
+
+	// Add a new boid into the System
+	public void mousePressed() {
+	  flock.addBoid(new Boid(this,mouseX,mouseY));
+	}
+
+
+
+	// The Flock (a list of Boid objects)
+
+	 
+	  ArrayList<Boid> boids; // An ArrayList for all the boids
+
+	  Flock() {
+	    boids = new ArrayList<Boid>(); // Initialize the ArrayList
+	  }
+
+	 public void run() {
+	    for (Boid b : boids) {
+	      b.run(boids);  // Passing the entire list of boids to each boid individually
+	    }
+	  }
+
+	 public void addBoid(Boid b) {
+	    boids.add(b);
+	  }
+
+	
+
+
+}

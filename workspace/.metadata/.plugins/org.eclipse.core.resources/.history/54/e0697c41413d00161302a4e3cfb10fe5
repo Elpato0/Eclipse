@@ -1,0 +1,11 @@
+package Shapes;
+
+import processing.core.PApplet;
+public class Rectangles {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

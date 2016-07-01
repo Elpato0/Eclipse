@@ -1,0 +1,292 @@
+package Games;
+import java.util.Random;
+import java.util.Scanner;
+
+ class Battleship {
+
+     public static void main(String[] args) {
+        int[][] plane1 = new int[5][5];
+        int[][] plane2 = new int[5][5];
+        // creating the place
+        int[][] boats = new int[3][2];
+        int[][] boats2 = new int[3][2];
+        //creating the ships
+        int[] shoot = new int[2];
+        int[] shoot2 = new int[2];
+        //creating the bullets
+        int tries = 0,Shots = 0;
+        //tries is how many attemps it took, Shots is the number of succesful hits.
+        
+        inthePlane(plane1);
+        //This method sets the value of all the integers that make the plane equal is -1
+        TheBoats(boats);
+        TheBoats2(boats2);
+
+        //this method chooses random placements for the ships
+        
+        do{//this loop takes user input and checks if the shot hit a ship or not
+            ThePlane(plane1);
+            ThePlane2(plane2);
+            //This method prints the bords and shows visual of the shots
+            shoot(shoot);
+            //This method takes user input
+            tries++;
+            //adds +1 to the total of tries each time the loop runs
+            if(DiditHit(shoot, boats)){
+            	//if the shot hits a ship this runs
+            	hint(shoot, boats, tries);
+                //Gives a hint in every round after the first one
+                Shots++;
+                //keeps track of how many ships the user hit
+            }                
+            else
+                hint(shoot, boats, tries);
+            //It gives a hint if you hit a ship or not
+            changePlane(shoot,boats,plane1);
+            //this changes the visual board in the console depending if the shot hit or missed
+
+        }while(Shots != 3);
+        //this loop checks if all ships were hit and if they were it would tell the user
+        System.out.println("\n\n\nYou won You hit 3 ships in " + tries + " tries");
+        ThePlane(plane1);
+    }
+    
+     static void inthePlane(int[][] plane){
+        for(int row=0 ; row < 5 ; row++ )
+            for(int column=0 ; column < 5 ; column++ )
+            	plane[row][column] = -1;
+        //sets the board value to -1
+    }
+    
+     static void ThePlane(int[][] board){
+        System.out.println("\t1 \t2 \t3 \t4 \t5 ");
+        //this prints the column numbers
+        System.out.println();
+        
+        for(int column = 0 ; column < 5 ; column++ ){
+            System.out.print((column+1)+"");
+            
+            for(int row=0 ; row < 5 ; row++ ){
+            	
+                if(board[column][row] == -1){
+                	
+                    System.out.print("\t"+"~");
+                    //this prints the unknown spots
+                }else if(board[column][row]==0){
+                	
+                    System.out.print("\t"+"*");
+                    //this outputs the already hit and empty spots
+                    
+                }else if(board[column][row] == 1){
+                	
+                    System.out.print("\t" + "X");
+                    //this outputs the destroyed ships
+                }
+                
+            }
+            System.out.println();//new line
+        }
+
+    }
+     static void ThePlane2(int[][] board){
+         System.out.println("\t1 \t2 \t3 \t4 \t5 ");
+         //this prints the column numbers
+         System.out.println();
+         
+         for(int column = 0 ; column < 5 ; column++ ){
+             System.out.print((column+1)+"");
+             
+             for(int row=0 ; row < 5 ; row++ ){
+             	
+                 if(board[column][row] == -1){
+                 	
+                     System.out.print("\t"+"~");
+                     //this prints the unknown spots
+                 }else if(board[column][row]==0){
+                 	
+                     System.out.print("\t"+"*");
+                     //this outputs the already hit and empty spots
+                     
+                 }else if(board[column][row] == 1){
+                 	
+                     System.out.print("\t" + "X");
+                     //this outputs the destroyed ships
+                 }
+                 
+             }
+             System.out.println();//new line
+         }
+
+     }
+     static void TheBoats(int[][] ships){
+        Random randomNumber = new Random();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Player 1 Please enter the position of the first ship.\nRow:");
+         ships[0][0] = scanner.nextInt();
+         System.out.println("Column:");
+         ships[0][1] = scanner.nextInt();
+         System.out.println("Player 1 Please enter the position of the second ship.\nRow:");
+         ships[1][0] = scanner.nextInt();
+         System.out.println("Column:");
+         ships[1][1] = scanner.nextInt();
+         System.out.println("Player 1 Please enter the position of the third ship.\nRow:");
+         ships[2][0] = scanner.nextInt();
+         System.out.println("Column:");
+         ships[2][1] = scanner.nextInt();
+
+        
+        /*for(int ship = 0 ; ship < 3 ; ship++){
+            ships[ship][0] = randomNumber.nextInt(5);
+            ships[ship][1] = randomNumber.nextInt(5);
+            //this sets s random place for the ships
+            
+            for(int last = 0 ; last < ship ; last++){
+                if( (ships[ship][0] == ships[last][0]) && (ships[ship][1] == ships[last][1]) )
+                    do{
+                        ships[ship][0] = randomNumber.nextInt(5);
+                        ships[ship][1] = randomNumber.nextInt(5);
+                    }while( (ships[ship][0] == ships[last][0]) && (ships[ship][1] == ships[last][1]) );
+                //this makes sure no two ships have  the same coordinates
+            }
+            
+        }*/
+    }
+     static void TheBoats2(int[][] ships){
+         Random randomNumber = new Random();
+         Scanner scanner = new Scanner(System.in);
+         System.out.println("Player 2 Please enter the position of the first ship.\nRow:");
+          ships[0][0] = scanner.nextInt();
+          System.out.println("Column:");
+          ships[0][1] = scanner.nextInt();
+          System.out.println("Player 2 Please enter the position of the second ship.\nRow:");
+          ships[1][0] = scanner.nextInt();
+          System.out.println("Column:");
+          ships[1][1] = scanner.nextInt();
+          System.out.println("Player 2 Please enter the position of the third ship.\nRow:");
+          ships[2][0] = scanner.nextInt();
+          System.out.println("Column:");
+          ships[2][1] = scanner.nextInt();
+
+         
+         /*for(int ship = 0 ; ship < 3 ; ship++){
+             ships[ship][0] = randomNumber.nextInt(5);
+             ships[ship][1] = randomNumber.nextInt(5);
+             //this sets s random place for the ships
+             
+             for(int last = 0 ; last < ship ; last++){
+                 if( (ships[ship][0] == ships[last][0]) && (ships[ship][1] == ships[last][1]) )
+                     do{
+                         ships[ship][0] = randomNumber.nextInt(5);
+                         ships[ship][1] = randomNumber.nextInt(5);
+                     }while( (ships[ship][0] == ships[last][0]) && (ships[ship][1] == ships[last][1]) );
+                 //this makes sure no two ships have  the same coordinates
+             }
+             
+         }*/
+     }
+
+     static void shoot(int[] shoot){
+        Scanner scanner = new Scanner(System.in);
+        
+         do{
+        System.out.print("Row: ");
+        shoot[0] = scanner.nextInt();
+        } while (shoot[0] < 0 || shoot[0] > 5);
+         //user input of rows
+        shoot[0]--;
+        //The minus one is because  the arrays start from 0 so its 0 - 4 not 1 - 5 so it subtracts one 
+       do{ 
+        System.out.print("Column: ");
+        shoot[1] = scanner.nextInt();
+       } while (shoot[1] < 0 || shoot[1] > 5);
+       //user input of columns
+        shoot[1]--;
+    }
+    
+     static boolean DiditHit(int[] shoot, int[][] ships){
+        
+        for(int boat = 0 ; boat < ships.length ; boat++){
+            if( shoot[0] ==ships [boat] [0] && shoot [1] == ships [boat] [1]){
+                System.out.printf("You hit a ship.\n");
+                return true;//checks if the shot hit a ship
+            }
+        }
+        return false;
+    }
+
+     static void changePlane(int[] shoot, int[][] ships, int[][] board){
+        if(DiditHit(shoot,ships))
+            board [shoot[0]] [shoot[1]] = 1;
+        else
+            board [shoot[0]] [shoot[1]] = 0;
+    }
+
+     static void hint(int[] shoot, int[][] boats, int attempt){
+    	int row = 0, column = 0;
+    	
+    	for(int line = 0; line < boats.length; line++){
+    		if(boats [line] [0] == shoot [0])
+    			row++;
+    		
+                if(boats[line][1]==shoot[1])
+                    column++ ;
+    			
+    			
+    			
+    		}
+    	 System.out.printf("\nHint %d: \nRow %d -> %d ships\n" +
+                 "Column %d -> %d ships\n",attempt ,shoot[0] + 1, row, shoot[1] + 1, column);
+    	}
+    }
+    /*
+     * Pseudocode:
+      BattleShip 
+
+
+Rules of the game:
+
+There is a 5x5 plane,. There are 3 hidden ships (one in each block).
+The objective of the game is figuring out where these ships are placed.
+The game only ends when you find and sink the 3 ships.
+
+
+
+
+
+
+ the variables are created 'plane[5][5]', which will store the game board,
+ the variable 'boats[3][2]', which will store the place of the 3 hidden ships on the board,
+ the variable 'shoot[2]' that will store the position of the shot 
+ the variable 'tries', which will store the number of attempts the player has to hit the 3 ships 
+ the variable 'Shots' that counts the number of ships you hit.
+
+Method ‘inthePlane' is triggered, to create the board with the value '-1' in all positions.
+
+Once the method is ‘TheBoats', which will fill the position of 3 ships.
+This method draws randomly two numbers between 0 and 4. 
+
+
+After that, in we start the game.
+The games begin using a do while loop. The game goes on until the user hits the tree ships.
+
+The first thing that occurs in the loop is to show the board, through the loop ‘Method The plane'.
+This method checks each position of the Board
+If -1 ,it exhibits water, '~'.
+If 0, it displays the shot was given and missed, '*', and if it is 1, it displays 'X' indicates that you hit a ship that position.
+
+After showing the board, the user inters the coordinates which they want to hit.
+
+After the shot was given, the game will check if that shot hit a ship in the method DiditHit.
+
+Hitting or missing, a hint is also given. This hint is displayed through the method 'hint()', 
+
+
+after the user shoots the board will be changed. The shot you took that spot will change the board, will appear as shot '*' or shot that hit 'X'.
+
+We will do this through the method changePlane
+
+If hit, the board position for the shot you gave will change from '-1' to '1 '.
+If  the board position for the shot you gave will change from '-1' to '0 '.
+So when the board is displayed, display with '*' or 'X' in place of this ancient '~'.
+
+*/

@@ -1,0 +1,40 @@
+package Cars;
+
+import processing.core.PApplet;
+
+public class Car2 extends PApplet{
+	
+	public static void main(String[] args){
+		PApplet.main("Cars.Car2"); // Start the parent program
+	}
+	
+	//Create Object variables, instead of a bunch of value variables. 
+	CarStart car1;
+	CarStart car2;
+	
+	public void settings(){
+		size(200,200);
+		noSmooth();
+	}
+	
+	public void setup(){
+		// Initialize those Objects 
+		car1 = new CarStart(this, 25, 100, 2);
+		car2 = new CarStart(this, 150, 65, 3);
+
+	}
+	
+	public void draw(){
+		background(255);
+		
+		// Move EACH car object
+		car1.move();
+		car2.move();
+		// Display EACH car object
+		car1.display();
+		car2.display();
+	}
+	
+	
+	
+} // End Cars

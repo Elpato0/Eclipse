@@ -1,0 +1,107 @@
+package F;
+
+import processing.core.*;
+
+import java.util.*;
+import F.BallFlock;
+import F.Boid;
+import Shapes.Rectangle;
+
+public class Flock extends PApplet {
+	public static void main(String[] args) {
+		PApplet.main("F.Flock");
+
+	}
+	 ArrayList<Boid> boids =  new ArrayList<Boid>();
+	//Boid boid;
+	Flock flock;
+	BallFlock ball;
+	public void settings(){
+
+		 size(640, 360);
+	}
+
+	public void setup() {
+		background(50);
+	 
+	  flock = new Flock();
+	  // Add an initial set of boids into the system
+	  for (int i = 0; i < 150; i++) {
+	    flock.addBoid(new Boid(this,width/2,height/2));
+	    
+	    
+	  }
+	  ball = (new BallFlock(this,mouseX,mouseY,10));
+	}
+
+	public void draw() {
+		background(50);
+	  Collision();
+	  
+	  flock.run();
+	  if(mousePressed){
+		 // text("HI",mouseX,mouseY);
+		  ball.paint();
+	  }
+	  
+	 // ball.update();
+	}
+
+	// Add a new boid into the System
+	public void mousePressed() {
+		//text("HI",40,40);
+		//ball.paint();
+	}
+
+
+
+	// The Flock (a list of Boid objects)
+	
+	 
+
+
+	 
+
+	 public void run() {
+
+	    for (Boid b : boids) {
+	      b.run(boids);  // Passing the entire list of boids to each boid individually
+	     
+	    }
+	   
+	  }
+	 public void Collision(){
+		 
+			
+		 for(int i = 0; i <= boids.size(); i++){
+				
+				Boid b = boids.get(i);
+				text("WWW",width/2,height/2 );
+				textSize(100);
+				background(0);
+				if(ball.getX() == b.getXB()){
+					background(0);
+					text("youlost",width/2,height/2);
+					textSize(50);
+					
+				}
+				
+			/*if(ball.getX() + (ball.getSize()/2) > b.getXB() 
+					&&(ball.getX() + (ball.getSize()/2)) < b.getXB() + b.getWidth()
+					&& ball.getY() < (b.getYB() + b.getHeight())) {
+						background(0);
+						text("youlost",width/2,height/2);
+						textSize(50);
+					}*/
+		 }
+		}
+
+	 public void addBoid(Boid b) {
+
+	    boids.add(b);
+	  }
+
+	
+
+
+}

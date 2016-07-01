@@ -1,0 +1,21 @@
+package myProject;
+
+import myProject.CheckTriangle;
+import processing.core.*;
+public class mainProject extends PApplet {
+
+	public static void main(String[] args) {
+		PApplet.main("myProject.CheckTriangle");
+
+	}
+	public void settings(){
+		size(640,360);
+	}
+	public void setup(){
+		
+	}
+	public void draw(){
+		
+	}
+
+}

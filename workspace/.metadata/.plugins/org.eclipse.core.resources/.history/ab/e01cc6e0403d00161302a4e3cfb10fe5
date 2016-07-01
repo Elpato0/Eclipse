@@ -1,0 +1,17 @@
+import processing.core.*;
+import java.out.Color;
+
+public class Rectangle extends PApplet {
+	float x;
+	float y;
+	float hieght;
+	float width;
+	
+	public Rectangle(PApplet tempP, float tempX, float tempY, float)
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

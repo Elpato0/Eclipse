@@ -1,0 +1,19 @@
+package myProject;
+
+import processing.core.*;
+
+public class CheckTriangle {
+	PApplet p;
+	float FS;
+	float SS;
+	float TS;
+	
+	public  CheckTrinagle(PApplet tempP,float tempFS, float tempSS, float TS){
+		p = tempP;
+		FS = tempFS;
+		SS = tempSS;
+		TS = tempTS
+	}
+
+}
+

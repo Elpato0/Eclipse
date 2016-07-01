@@ -1,0 +1,24 @@
+import processing.core.PApplet;
+
+public class HelloWorlds extends PApplet {
+int b = 2 & 4;
+	public static void main(String[] args) {
+	PApplet.main("HelloWorlds");	
+	}
+	
+	public void setting()
+	{
+		size(4000,4000);
+	}
+	public void setup()
+	{
+	
+	background(45,255,45,1);	
+	}
+	public void draw()
+	{
+	line(10,10,10,300);
+	line(40,40,300,300);
+
+	}
+}

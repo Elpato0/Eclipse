@@ -1,0 +1,24 @@
+package myProject;
+
+import processing.core.*;
+
+public class CheckTriangle {
+	PApplet p;
+	String FS = "";
+	String SS = "";
+	String TS = "";
+	
+	public  CheckTriangle(PApplet tempP,String tempFS, String tempSS, String tempTS){
+		p = tempP;
+		FS = tempFS;
+		SS = tempSS;
+		TS = tempTS;
+	}
+	public void settings(){
+		p.size(640,360);
+	}
+	@text("Please enter the length of the three sides "
+		+ "of a triangle to check if\n it is right or not\nSide 1: ");
+
+}
+

@@ -1,0 +1,56 @@
+package BreakOut;
+import Shapes.RectangleMain;
+import processing.core.*;
+import java.awt.Color;
+
+public class Rectangle  {
+	PApplet p;
+	float x;
+	float y;
+	float height;
+	float width;
+	Color innerColor;
+	
+	public Rectangle(PApplet tempP, float tempX, float tempY, float tempH, float tempW){
+		
+		p = tempP;
+		x = tempX;
+		y = tempY;
+		width = tempW;
+		height = tempH;
+		innerColor = new Color(255,255,255);
+	}
+	public void paint(){
+		p.noStroke();
+		p.fill(innerColor.getRed(),innerColor.getGreen(),innerColor.getBlue());
+		p.rect(x, y, width, height);
+	}
+	/*public void display(){
+		p.fill(255);
+		p.rect(x, y, width, height);
+	}*/
+	
+	public void setX(float newX){
+		x = newX;
+	}
+	
+	public void setY(float newY){
+		y = newY;
+	}
+	
+	public void setWidth(float newW){
+		width = newW;
+	}
+	public void setHeight(float newW){
+		height = newW;
+	}
+	public float getX(){
+		return x;
+	}
+	public float getY(){
+		return y;
+	}
+	
+
+
+}

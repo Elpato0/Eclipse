@@ -1,0 +1,37 @@
+package myProject;
+
+import java.util.Scanner;
+import myProject.CheckTriangle;
+import processing.core.*;
+public class mainProject extends PApplet {
+	
+	Scanner scanner = new Scanner(System.in);
+	CheckTriangle triangle;
+	float FS  ;
+
+	public static void main(String[] args) {
+		PApplet.main("myProject.CheckTriangle");
+
+	}
+	public void settings(){
+		size(640,360);
+	}
+	public void setup(){
+		//triangle = new CheckTriangle(this,)
+			}
+	public void draw(){
+		pushMatrix();
+		translate(width*0.5, height*0.5);
+		rotate((float) (frameCount / 200.0));
+		polygon(0,0,50,2);
+		pushMatrix();
+		ellipse(50,50,50,05);
+	    pushMatrix();
+	    translate(width*0.5, height*0.5);
+		rotate((float) (frameCount / -100.0));
+	    polygon(0, 0, 10, 7);  // Heptagon
+	    popMatrix();
+		
+	}
+
+}

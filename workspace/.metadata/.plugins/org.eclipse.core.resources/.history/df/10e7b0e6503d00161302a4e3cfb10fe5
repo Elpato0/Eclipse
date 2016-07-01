@@ -1,0 +1,26 @@
+package Shapes;
+import Shapes.Ball;
+import processing.core.PApplet;
+import java.awt.Color;
+
+public class BallMain extends PApplet {
+	public static void main(String[] args) {
+		PApplet.main("Shapes.BallMain");
+
+	}
+	Ball ball1;
+	Ball ball2;
+	
+	public void settings(){
+		size(500,500);
+	}
+	public void setup(){
+		ball1 = new Ball(this, 400,250,50,255);
+	}
+	public void draw(){
+		ball1.paint();
+	}
+
+	
+
+}
